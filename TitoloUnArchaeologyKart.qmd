@@ -608,7 +608,7 @@ Source: xkcd
 
 ::: {.column width="50%"}
 
-- **[The Governance Policies and Political Landscapes in the Southern Levant under the Neo-Assyrian Empire](https://www.dipstudistorici.unito.it/do/progetti.pl/Show?_id=0sk8)**
+- **[The Governance Policies and Political Landscapes in the Southern Levant under the Neo-Assyrian Empire](https://www.dipstudistorici.unito.it/do/progetti.pl/Show?_id=0sk8)** (University of Turin)
 - Relatively simple workflow (Two main uses)
 
 ::: {.fragment fragment-index=1 .fade-in-then-semi-out}
@@ -862,9 +862,9 @@ Andrea Titolo ([andrea.titolo@unito.it](mailto:andrea.titolo@unito.it)) - {{< bi
 <br>
 
 
-![)](img/qr_code.webp)
+![](img/qr_code.webp)
 <br>
-[Interactive Presentation](https://www.andreatitolo.com/slides/2023-12-13-archeofoss/archeofoss2023#/title-slide)
+[Interactive Presentation](https://www.andreatitolo.com/talks/2024-11-07-unconference/titolounarchaeologykart#/title-slide)
 
 <br>
 

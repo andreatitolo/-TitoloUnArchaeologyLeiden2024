@@ -1,0 +1,875 @@
+---
+title: "Open-Source versioning of archaeological GIS data with Kart"
+subtitle: Open Science in Archaeology - An Unconference (Leiden, 7-8 November)
+authors:
+  - name: "Andrea Titolo"
+    url: "https://andreatitolo.com"
+    orcid: "0000-0002-7322-8634"
+    affiliation:
+      - University of Turin
+title-slide-attributes: 
+  data-background-image: img/vcs_bg.webp
+format: 
+  revealjs:
+      slide-number: true
+      progress: false
+      preview-links: true
+      theme: [default, scss/style.scss]
+      width: 1600
+      height: 900
+      transition: fade
+      citeproc: true
+      citations-hover: true
+      bibliography: bib/references.bib
+      csl: bib/journal-of-archaeological-research.csl
+      link-external-icon: false
+      link-external-newwindow: true
+      embed-resources: false
+      multiplex: false
+      pdf-separate-fragments: true
+---
+
+## Talk overview
+
+::: {.columns}
+
+::: {.column width="48%"}
+- Introduction
+  - Open Science and version control in archaeology
+  - Git and limitation
+
+::: {.fragment fragment-index=1}
+- Git for geospatial data
+  - Description and features of Kart
+:::
+
+::: {.fragment fragment-index=2}
+- Practical applications of kart in archaeology
+:::
+
+::: {.fragment fragment-index=3}
+- Thoughts and conclusions
+:::
+:::
+
+::: {.column width="50%"}
+
+:::
+
+:::
+
+![](img/fork.webp){.absolute right="10%" top="1%" width="30%"}
+
+![](img/qr_code.webp){.absolute right="15%" top="58%" width="20%"}
+
+::: {.smallish .absolute right="8%" top="95%"}
+_Scan and follow the presentation on your phone!_
+:::
+
+::: {.fragment fragment-index=4}
+![](img/git-jargon.webp){.absolute right="-5%" top="0%" width="60%"}
+:::
+
+# Introduction
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+---
+
+## Open Science and transparency of the process
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- One (of many) aim Open Science: opening and transparency of process behind data creation and results
+- "Data must have history" @Strupler.Wilkinson2017
+<!-- - Plain text formats -->
+
+:::
+
+::: {.column width="50%"}
+![@Wallis2022](img/data_management.webp){style="font-size: 0.9em; text-align: center" fig-align="center" width="80%"}
+:::
+
+:::
+
+<!-- ::: {.fragment fragment-index=1}
+![](img/icon-markdown.webp){.absolute right="80%%" top="65%" width="20%"}
+
+![](img/icon-csv.webp){.absolute right="55%" top="60%" width="15%"}
+::: -->
+
+---
+
+## Version control
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+- Transparent process trough "snapshots" at different stages (roll-back if necessary)
+- Provides a solution to the multiple iterations of correction and renaming of the same file
+- Greater accountability and better documentation [@Kansa2012]
+- Enhances Open Science practices [@Marwick2017]
+
+:::
+
+::: {.column width="45%"}
+
+![Source: xkcd](img/xkcd-documents.webp){style="font-size: 0.9em; text-align: center" fig-align="center" width="50%"}
+
+:::
+
+:::
+
+![](img/icon-git.webp){.absolute right="85%" top="72%" width="10%"}
+
+![](img/icon-mercurial.webp){.absolute right="67%" top="72%" width="10%"}
+
+![](img/icon-subversion.webp){.absolute right="49%" top="72%" width="10%"}
+
+---
+
+## Git
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Distributed version control system
+- Originally developed to track changes in the linux kernel
+- Adapted also to non-programming applications
+  
+::: {.fragment fragment-index=1}
+- Git is still not a user friendly software
+- Graphical frontends do not always help
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](img/icon-git.webp){.absolute right="40%" top="2%" width="10%"}
+![](img/git_branching.webp){width="100%"}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1}
+![](img/xkcd-git.webp){.absolute right="6%" top="9%" width="32%"}
+:::
+
+::: {.fragment fragment-index=1 .absolute right="15%" top="92%"}
+Source: xkcd
+:::
+
+---
+
+## Distributed version control and archaeology
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Archaeology has come a long way in adopting version control
+- Applied mainly in the programming/scripting applications and manuscripts/publications
+
+::: {.fragment fragment-index=1}
+- Some attempts to adapt it to fieldwork practices
+:::
+
+<br>
+
+::: {.fragment fragment-index=1}
+![Source: @Strupler.Wilkinson2017 [fig. 5]](img/panormus-git.webp){style="font-size: 0.9em; text-align: center" fig-align="center"}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+![Source: @Strupler.Wilkinson2017 [fig. 4]](img/panormus-workflow.webp){style="font-size: 0.9em; text-align: center" fig-align="center"}
+:::
+
+:::
+
+:::
+
+---
+
+## Git and binary files
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+- Binary files: images, word documents, excel files
+- Git is not as efficent with binary files as it is with plain text (save the entire file every time)
+- Storage issues, harder to track changes
+- For text files, plain text can sometimes be the answer, but what about GIS and relational databases?
+
+::: {layout-ncol=2}
+![Example diff of plain text file with additions visibile in green](img/git_diff.webp){style="font-size: 0.8em; text-align: center" width="50%"}
+
+![Example diff of binary file, no change visible](img/git_diff_binary.webp){style="font-size: 0.8em; text-align: center" width="50%"}
+:::
+
+---
+
+## What about geospatial data?
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- In GIS, research process is often obscured by the point-and-click nature of the GUI
+
+::: {.fragment fragment-index=1}
+
+- QGIS models can surely help reproducibility of some analyses
+- Scripts for data cleaning
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](img/gis-layers.webp){fig-align=center width="50%"}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1}
+
+![](img/logo-qgis.webp){.absolute right="42%" top="23%" width="8%"}
+
+![](img/logo-r.webp){.absolute right="59%" top="38%" width="10%"}
+
+:::
+
+::: {.fragment fragment-index=3 .absolute top="62%"}
+> For many in archaeology, for whom using GIS to visualise results is essentially a graphical-based point and-click process, advocating a return to code may seem like a backward step. We understand the arguments  for usability, and acknowledge that **intermediate tools which can bridge point-and-click with code-based approaches are desperately required**.
+> 
+> @Strupler.Wilkinson2017
+
+:::
+
+
+# Git for geospatial data
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+---
+
+## Git for distributed version control of geospatial data {visibility="hidden"}
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Some earlier attempts like GeoGig (2017)
+  - Not under active development anymore
+  - Did not work with geopackages
+  - Only inspired by git
+
+::: {.fragment fragment-index=1}
+- Kart (2020)
+:::
+  
+:::
+
+::: {.column width="50%"}
+
+![](img/geogig-website.webp){fig-align="center"}
+
+![](img/repo-geogig.webp){fig-align="center"}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1}
+![](img/kart-github.webp){.absolute right="50%" top="50%" width="40%"}
+:::
+
+---
+
+## Git for distributed version control of geospatial data
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- A distributed version control system for geospatial and tabular data [@Kart2023]
+- Cross-platform
+- [FOSS](https://github.com/koordinates/kart) (Free and Open Source Software)
+- GPL (v2) License
+- by Koordinates in 2020
+- More info: @Coup2023[FOSS4G], @Coup2022[FOSS4G:UK], @Olaya2022[QGISDay], and @Coup2022a[PostGISDay] presentations
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](img/kart_homepage.webp){fig-alt= fig-align=center}
+:::
+
+:::
+
+---
+
+## Kart features
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Works with different file formats: Geopackage, PostgreSQL/PostGIS, MySQL, MSSQLS
+- Support most geospatial data types: Vectors, Raster, Point Clouds, Lidar, etc.
+- Planned support for shapefiles
+- "Built on git, works like git"
+
+::: {.fragment fragment-index=1}
+- Ships with its own version of git and git large file storage
+- No need to have git installed
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](img/kart_features.webp){fig-align=center}
+
+::: {.fragment fragment-index=1}
+![](img/cli-kart-version.webp){fig-align=center}
+:::
+:::
+
+:::
+
+---
+
+## Kart features
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Track changes at the row and cell layer level
+- Command Line Interface tool
+- Standard git workflow
+  - `kart status`
+  - `kart add`
+  - `kart commit`
+  - `kart pull`
+  - `kart push`
+  - `kart log`
+  - `kart switch/branch`
+- Scriptable
+
+:::
+
+::: {.column width="50%"}
+
+![](img/cli-kart-man.webp){.absolute right="-2%" top="25%" width="60%"}
+
+:::
+
+:::
+
+---
+
+## Kart QGIS Plugin
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- QGIS plugin offers a Graphical User Interface
+
+::: {.fragment fragment-index=2}
+- (Almost) all the kart commands are available
+:::
+
+::: {.fragment fragment-index=3}
+- Visual tool to inspect changes
+:::
+
+:::
+
+::: {.column width="50%"}
+![](img/qgis-kart-plugin-homepage.webp){fig-align=center}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1 .fade-in-then-out}
+![](img/qgis-kart-panel.webp){.absolute right="3%" top="9%" width="35%"}
+:::
+
+::: {.fragment fragment-index=2 .fade-in-then-out}
+![](img/qgis-kart-panel-right-click.webp){.absolute right="3%" top="9%" width="35%"}
+:::
+
+::: {.fragment fragment-index=3}
+![](img/qgis-kart-visual-diff.webp){.absolute right="-2%" top="9%" width="50%"}
+:::
+
+::: {.fragment fragment-index=3}
+![](img/qgis-kart-visual-diff-table.webp){.absolute right="55%" top="43%" width="45%"}
+:::
+
+
+---
+
+## Remote Collaboration
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+- Host data in remote repositories (Github, Codeberg, Gitlab, Sourcehut, etc.)
+- Compatible with all qgis styles
+
+::: {.fragment fragment-index=1}
+- Potential to mitigate common issues with data sharing
+:::
+
+
+![](img/kart_branching.webp){.absolute right="45%" top="40%" width="50%"}
+
+::: {.fragment fragment-index=1}
+![](img/shp-meme.webp){.absolute right="0%" top="10%" width="37%"}
+:::
+
+
+---
+
+## Kart way of storing data
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1]{style="opacity:0.25"} 2 [3 4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Data are broken down into SQL-like model of tabular structure
+- Visible in the remote repository, not in the working copy (local folder)
+- The geopackage (or any format) is not present on the kart remote repo
+
+<br>
+
+![](img/project-kart-working-copy-structure2.webp){fig-align=left}
+
+:::
+
+::: {.column width="50%"}
+
+![](img/project-kart-repo-structure.webp){fig-align=center}
+
+:::
+
+:::
+
+# Kart for archaeology
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+---
+
+
+## Kart for archaeology
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Fieldwork (no need internet connection unless you push changes to remote)
+  - Remote repository can also be another folder
+- Desk-based work
+  - Collaboration inside projects
+- Uphold Open Science practices
+
+:::
+
+::: {.column width="50%"}
+
+![By Ainsley Seago (2014) CC BY 4.0](img/archeo-open-science.webp){style="font-size: 0.9em; text-align: center" fig-align="center"}
+
+:::
+
+:::
+
+---
+
+## Practical use of Kart - Research Project
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- **[The Governance Policies and Political Landscapes in the Southern Levant under the Neo-Assyrian Empire](https://www.dipstudistorici.unito.it/do/progetti.pl/Show?_id=0sk8)**
+- Relatively simple workflow (Two main uses)
+
+::: {.fragment fragment-index=1 .fade-in-then-semi-out}
+- Collaboration between project members
+  - Simple git workflow
+  - Different branches for each person, pushing and merging to `main`
+:::
+
+::: {.fragment fragment-index=2}
+- Keeping track of dataset change 
+  - Transparency of the process
+  - File (and methods) history
+  - Inspect beyond the final product
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](img/unito_study_area_selected.webp){fig-align="center"}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1 .fade-in-then-out}
+![](img/cli-project-kart-branches.webp){.absolute right="0%" top="58%" width="50%"}
+![](img/project-github-branches.webp){.absolute right="0%" top="18%" width="50%"}
+:::
+
+::: {.fragment fragment-index=2}
+![](img/project-kart-commit-history.webp){.absolute right="-5%" top="45%" width="60%"}
+
+![](img/project-github-commit-history.webp){.absolute right="-5%" top="0%" width="52%"}
+:::
+
+---
+
+## Practical use of Kart - Fieldwork
+
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Archaeological survey ([ReLand Project](https://archeokri.it/en/missioni/reland-archaeological-project-resurfacing-landscapes-of-the-mosul-dam-reservoir/))
+- Workday branch (fieldwork raw data from Qfield)
+- Main branch (refined data, end of season)
+- Push to remote repo (https and external drive) for daily backup
+- No collaboration between team members (yet)
+
+:::
+
+::: {.column width="50%"}
+
+
+![](img/reland_general.webp){style="font-size: 0.9em; text-align: center" fig-align="center"}
+
+:::
+
+:::
+
+![](img/logo-kart.webp){.absolute left="0%" top="65%" width="25%"}
+
+![](img/logo-qfield.webP){.absolute left="24%" top="65%" width="10%"}
+
+![](img/logo-qgis.webp){.absolute left="38%" top="65%" width="10%"}
+
+
+---
+
+## Practical use of Kart - limitations
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Not many issues until now (few people)
+
+::: {.fragment fragment-index=1 .fade-in-then-semi-out}
+- Collaboration tested on two MacOS (13-Ventura and 12-Monterey), issues with MacOS 11-Big Sur
+- Kart tested also on Ubuntu-based Linux (Pop!_OS)
+:::
+
+::: {.fragment fragment-index=2}
+
+- Conflicts with primary keys when working with Geopackages
+
+:::
+:::
+
+::: {.column width="50%"}
+
+:::
+
+:::
+
+::: {.fragment fragment-index=1 .fade-in-then-out}
+![](img/logo-pop-os.webp){.absolute right="10%" top="5%" width="25%"}
+
+![](img/logo_apple.webP){.absolute right="20%" top="35%" width="25%"}
+
+![](img/logo-qgis.webp){.absolute right="10%" top="55%" width="10%"}
+:::
+
+::: {.fragment fragment-index=2}
+
+![](img/cli-kart-conflicts.webp){.absolute right="2%" top="8%" width="40%"}
+
+![](img/cli-kart-conflicts-show.webp){.absolute right="2%" top="40%" width="38%"}
+
+:::
+
+---
+
+## Spreading the word - Wiki
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="35%"}
+
+- Public project [wiki](https://github.com/UnitoAssyrianGovernance/.github/wiki)
+- How to use the dataset and [how to use kart](https://github.com/UnitoAssyrianGovernance/.github/wiki/GIS-Vector-Data#how-to-use-the-vector-kart-repository)
+- Tips to solve common issues
+- Methodology and convetions
+- Internal use and external reference
+- Updated as the project proceed
+
+:::
+
+::: {.column width="65%"}
+
+![](img/project-github-wiki.webp){fig-align=center}
+
+:::
+
+:::
+
+---
+
+## Spreading the word - Kart Tutorial
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2]{style="opacity:0.25"} 3 [4]{style="opacity:0.25"}
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="45%"}
+
+- Step-by-step tutorial for installing and basic use of Kart for archaeology
+- Part of [@Titolo.PalmisanoInPress]
+- Sample dataset provided
+- Build with Quarto (reproducible)
+
+:::
+
+::: {.column width="55%"}
+
+![](img/kart_tutorial.webp){fig-align=right}
+
+:::
+
+:::
+
+- Website: [unitoassyriangovernance.github.io/kart4arch/](https://unitoassyriangovernance.github.io/kart4arch/)
+- Source code:[github.com/UnitoAssyrianGovernance/kart4arch](https://github.com/UnitoAssyrianGovernance/kart4arch)
+
+
+
+
+# Conclusions
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2 3]{style="opacity:0.25"} 4
+:::
+:::
+
+---
+
+## Conclusions
+
+::: {.absolute top="0" left="95%"}
+::: {.sectionhead}
+[1 2 3]{style="opacity:0.25"} 4
+:::
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+**Advantages**
+
+- Git-based tool + Graphical solution for those unfamiliar with git
+- Fieldwork (no internet connection needed unless you push changes to remote)
+- Kart can fit well into archaeological Open Science practices
+- More transparency both during and after data creation process
+- Lack single file to download from online repositories[^1] (site stewardship)
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=2}
+**Disadvantages**
+
+- Not an easily accessible tool
+- Graphical interface still need more work
+- Solving primary key conflicts requires the command-line
+- Documentation is still catching up with recent development
+  - Contribution to upstream
+:::
+
+:::
+
+:::
+
+[^1]: [[Kart structure for storing vector data](https://docs.kartproject.org/en/latest/pages/development/table_v3.html)]{.fragment fragment-index=1}
+
+# Thank you! {background-image="img/vcs.webp" background-opacity="15%" style="text-align:center"}
+
+<br>
+
+Andrea Titolo ([andrea.titolo@unito.it](mailto:andrea.titolo@unito.it)) - {{< bi mastodon >}} [andreatitolo@archaeo.social](https://archaeo.social/@andreatitolo)
+
+<br>
+
+
+![)](img/qr_code.webp)
+<br>
+[Interactive Presentation](https://www.andreatitolo.com/slides/2023-12-13-archeofoss/archeofoss2023#/title-slide)
+
+<br>
+
+ {{< ai zenodo >}} <https://zenodo.org/doi/10.5281/zenodo.10370486  >
+
+ {{< bi github >}} [Slides Source Code](https://github.com/UnitoAssyrianGovernance/ArcheoFOSS2023) - [CC BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+# Works Cited
